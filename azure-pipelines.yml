@@ -64,6 +64,15 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
+# Test
+- task: DotNetCoreCLI@2
+  displayName: 'Run code covegage - $(buildConfiguration)'
+  inputs:
+    command: 'test'
+    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/Coverage/'
+    publishTestResults: true
+    projects: '**/*.Tests.csproj'
+
 
 #added
 - task: DotNetCoreCLI@2
