@@ -34,7 +34,7 @@ namespace Tests
             const int PAGE = 0; // take the first page of results
             const int MAX_RESULTS = 10; // sample up to 10 results
 
-            string gameRegion2  = "Milky Way";
+            // string gameRegion2  = "Milky Way";
 
             // Form the query predicate.
             // Select all scores for the provided game region.
@@ -50,8 +50,8 @@ namespace Tests
             IEnumerable<Score> scores = scoresTask.Result;
 
             // Verify that each score's game region matches the provided game region.
-            // Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion));
-            Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion2));
+            Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion));
+            // Assert.That(scores, Is.All.Matches<Score>(score => score.GameRegion == gameRegion2));
         }
     }
 }
