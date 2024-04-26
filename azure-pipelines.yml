@@ -65,15 +65,6 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
-# Test
-#- task: DotNetCoreCLI@2
-#  displayName: 'Run code covegage - $(buildConfiguration)'
-#  inputs:
-#    command: 'test'
-#    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/Coverage/'
-#    publishTestResults: true
-#    projects: '**/*.Tests.csproj'
-
 #added
 - task: DotNetCoreCLI@2
   displayName: 'Create code coverage report'
@@ -83,18 +74,16 @@ steps:
     arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
 
 #added
-#- task: PublishCodeCoverageResults@1
-#- task: PublishCodeCoverageResults@2
-#  displayName: 'Publish code coverage report'
-#  inputs:
-#    codeCoverageTool: 'cobertura'
-#    summaryFileLocation: '
-
-- task: PublishCodeCoverageResults@2
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage report'
   inputs:
+    codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
-    failIfCoverageEmpty: true
 
+#- task: PublishCodeCoverageResults@2
+#  inputs:
+#    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+#    failIfCoverageEmpty: true
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
