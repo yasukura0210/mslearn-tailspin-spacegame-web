@@ -99,13 +99,13 @@ steps:
   condition: succeeded()
 
 
-- task: PowerShell@2
-  enabled: true
-  displayName: "Install dependencies"
-  inputs:
-    targetType: 'inline'
-    script: 'npm ci'
-    workingDirectory: path/to/playwright/folder # update accordingly
+#- task: PowerShell@2
+#  enabled: true
+#  displayName: "Install dependencies"
+#  inputs:
+#    targetType: 'inline'
+#    script: 'npm ci'
+#    workingDirectory: path/to/playwright/folder # update accordingly
 
 - task: PowerShell@2
   enabled: true
