@@ -116,7 +116,7 @@ steps:
     PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
   inputs:
     targetType: 'inline'
-    script: 'npx playwright test -c playwright.service.config.ts --workers=20'
+    script: 'npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=20'
     workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - task: PublishPipelineArtifact@1
