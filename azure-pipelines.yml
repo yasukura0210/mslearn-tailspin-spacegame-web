@@ -129,7 +129,7 @@ steps:
     targetType: 'inline'
 #    script: 'npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=1'
     script: | 
-      cd ./tests
+      cd tests
       npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=1'
     workingDirectory: $(Build.SourcesDirectory)/playwright
 
