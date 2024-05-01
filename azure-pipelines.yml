@@ -110,8 +110,9 @@ steps:
 
 - script: |
     npm install
-    npx playwrite install
+    npm init playwright@latest
   displayName: "Install Playwright"
+  #npx playwrite install
 
 - task: PowerShell@2
   enabled: true
