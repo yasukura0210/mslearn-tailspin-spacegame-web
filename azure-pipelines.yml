@@ -106,7 +106,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'npm ci'
-    workingDirectory: path/playwright
+    workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - task: PowerShell@2
   enabled: true
@@ -117,12 +117,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'npx playwright test -c playwright.service.config.ts --workers=20'
-    workingDirectory: path/playwright
+    workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - task: PublishPipelineArtifact@1
   displayName: Upload Playwright report
   inputs:
-    targetPath: path/playwright/report/
+    targetPath: $(Build.SourcesDirectory)/playwright/report/
     artifact: 'Playwright tests'
     publishLocation: 'pipeline'
 
