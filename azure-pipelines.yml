@@ -100,13 +100,18 @@ steps:
   condition: succeeded()
 
 
-- task: PowerShell@2
-  enabled: true
-  displayName: "Install dependencies"
-  inputs:
-    targetType: 'inline'
-    script: 'npm ci'
-    workingDirectory: $(Build.SourcesDirectory)/playwright
+#- task: PowerShell@2
+#  enabled: true
+#  displayName: "Install dependencies"
+#  inputs:
+#    targetType: 'inline'
+#    script: 'npm ci'
+#    workingDirectory: $(Build.SourcesDirectory)/playwright
+
+- script: |
+    npm install
+    npx playwrite install
+  displayName: "Install Playwright"
 
 - task: PowerShell@2
   enabled: true
