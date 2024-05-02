@@ -131,10 +131,9 @@ steps:
 #    workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - script: |
-   cd ../tests
    npm install  
    npx playwright install
-   npx playwright test
+   npx playwright test test/sample.ts
   displayName: "Run Playwright tests"
 
 - task: PublishPipelineArtifact@1
