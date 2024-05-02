@@ -119,15 +119,23 @@ steps:
 #  displayName: "Install Playwright-2"
 #  #npx playwrite install
 
+#- task: PowerShell@2
+#  enabled: true
+#  displayName: "Run Playwright tests"
+#  env:
+#    PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(PLAYWRIGHT_SERVICE_ACCESS_TOKEN)
+#    PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
+#  inputs:
+#    targetType: 'inline'
+#    script: 'cd ../tests; npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=1'
+#    workingDirectory: $(Build.SourcesDirectory)/playwright
+
 - task: PowerShell@2
   enabled: true
   displayName: "Run Playwright tests"
-  env:
-    PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(PLAYWRIGHT_SERVICE_ACCESS_TOKEN)
-    PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
   inputs:
     targetType: 'inline'
-    script: 'cd ../tests; npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=1'
+    script: 'cd ../tests; npx playwright test --workers=1'
     workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - task: PublishPipelineArtifact@1
