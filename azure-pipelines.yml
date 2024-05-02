@@ -130,13 +130,12 @@ steps:
 #    script: 'cd ../tests; npx playwright test -c $(Build.SourcesDirectory)/playwright.service.config.ts --workers=1'
 #    workingDirectory: $(Build.SourcesDirectory)/playwright
 
-- task: PowerShell@2
-  enabled: true
+- script: |
+   cd ../tests
+   npm install  
+   npx playwright install
+   npx playwright test
   displayName: "Run Playwright tests"
-  inputs:
-    targetType: 'inline'
-    script: 'cd ../tests; npx playwright test --workers=1'
-    workingDirectory: $(Build.SourcesDirectory)/playwright
 
 - task: PublishPipelineArtifact@1
   displayName: Upload Playwright report
