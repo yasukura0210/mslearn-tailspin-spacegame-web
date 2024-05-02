@@ -133,7 +133,7 @@ steps:
 - script: |
    npm install  
    npx playwright install
-   npx playwright test test/sample.ts
+   npx playwright test tests/sample.ts
   displayName: "Run Playwright tests"
 
 - task: PublishPipelineArtifact@1
