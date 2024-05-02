@@ -133,7 +133,7 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: Upload Playwright report
   inputs:
-    targetPath: $(Build.SourcesDirectory)/tests/report/
+    targetPath: $(Build.SourcesDirectory)/tests/playwright-report/
     artifact: 'Playwright tests'
     publishLocation: 'pipeline'
 
