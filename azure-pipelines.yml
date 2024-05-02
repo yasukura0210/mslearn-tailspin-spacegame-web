@@ -133,9 +133,10 @@ steps:
 - script: |
    npm install  
    npx playwright install
-   npx playwright test tests/sample.ts
+   npx playwright test tests/*
   displayName: "Run Playwright tests"
 # npx playwright test tests/example.spec.ts
+# npx playwright test tests/sample.ts
 
 - task: PublishPipelineArtifact@1
   displayName: Upload Playwright report
